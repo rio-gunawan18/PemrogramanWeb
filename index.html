@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UAP PEMROGRAMAN WEB</title>
+  <style>
+    .tab {
+      width: 35%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+
+    .ble {
+        width: 25%;
+        border-collapse: collapse;
+    }
+
+    .tab, th, td {
+      border: 2px solid black;
+      padding: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <table class="tab">
+    <thead>
+      <tr>
+        <th>Kode</th>
+        <th>Nama Barang</th>
+        <th>Harga</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>A</td>
+        <td>10000</td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>B</td>
+        <td>20000</td>
+      </tr>
+      <tr>
+        <td>003</td>
+        <td>C</td>
+        <td>30000</td>
+      </tr>
+    </tbody>
+  </table>
+
+<h2>Inputan User</h2>
+
+  <table class="ble">
+      <tr>
+          <td style="text-align: left;"><label for="kode">Masukkan Kode</label></th>
+          <td><label for="">:</label></th>
+          <td style="text-align: left;"><input type="text" id="kode" placeholder="Masukkan Kode"></th>
+      </tr>
+      <tr>
+          <td style="text-align: left;"><label for="jumlah">Banyaknya Barang</label></th>
+          <td><label for="">:</label></th>
+          <td style="text-align: left;"><input type="number" id="jumlah" placeholder="Banyaknya Barang"></th>
+      </tr>
+      <tr style="border: 2px solid;">
+          <td style="text-align: left; border: 0px;"><button onclick="hitungTotal()">Submit</button></td>        
+      </tr>
+  </table>
+  <script>
+    function hitungTotal() {
+      var kode = document.getElementById("kode").value;
+      var jumlah = parseInt(document.getElementById("jumlah").value);
+      var hargaBarang;
+      switch(kode) {
+        case "001":
+          hargaBarang = 10000;
+          break;
+        case "002":
+          hargaBarang = 20000;
+          break;
+          case "003":
+          hargaBarang = 30000;
+          break;
+        default:
+          alert("Kode barang tidak valid");
+          return;
+      }
+
+      var total = hargaBarang * jumlah;
+      alert("Total pembayaran adalah " + total);
+      var uang = parseFloat(prompt("Masukkan uang user"));
+
+      if (isNaN(uang)) {
+        alert("Input uang tidak valid");
+        return;
+      }
+
+      if (uang < total) {
+        alert("Jumlah uang tidak mencukupi");
+        return;
+      }
+
+      var kembalian = uang - total;
+
+      alert("Total kembalian anda adalah " + kembalian);
+    }
+  </script>
+
+</body>
+</html>
